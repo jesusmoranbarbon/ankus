@@ -63,7 +63,7 @@ public class Neighborhood1Mapper extends Mapper<LongWritable, Text, Text, Text> 
         String neighborhood = columns[1];
 
         // Set a variable for join
-	  	context.write(new Text(me), new Text(neighborhood + "\t" + Constants.SIMILARITY1));
+	  	context.write(new Text(me), new Text(neighborhood + this.delimiter + Constants.SIMILARITY1));
     }
 
     @Override
