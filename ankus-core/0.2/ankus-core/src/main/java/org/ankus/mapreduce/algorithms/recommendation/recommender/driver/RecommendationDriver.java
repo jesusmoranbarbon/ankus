@@ -123,6 +123,7 @@ public class RecommendationDriver extends Configured implements Tool {
                 ItemListReducer.class, Text.class, NullWritable.class);
 
         job1.getConfiguration().set(Constants.DELIMITER, delimiter);
+        job1.setCombinerClass(ItemListReducer.class);
 
         boolean step1 = job1.waitForCompletion(true);
         if(!(step1)) return -1;
