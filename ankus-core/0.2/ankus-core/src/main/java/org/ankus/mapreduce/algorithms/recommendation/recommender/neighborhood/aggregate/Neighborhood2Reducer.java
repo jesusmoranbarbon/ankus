@@ -59,7 +59,7 @@ public class Neighborhood2Reducer extends Reducer<Text, Text, Text, Text> {
 
         while (iterator.hasNext()){
             Text text = iterator.next();
-            String[] columns = text.toString().split(delimiter);
+            String[] columns = text.toString().split("\t");
             context.write(key, new Text(columns[0]));
         }
     }

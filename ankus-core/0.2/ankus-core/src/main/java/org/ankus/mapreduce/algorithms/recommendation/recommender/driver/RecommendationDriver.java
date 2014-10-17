@@ -144,6 +144,7 @@ public class RecommendationDriver extends Configured implements Tool {
                 Neighborhood1Reducer.class, Text.class, Text.class);
 
         job2.getConfiguration().set(Constants.DELIMITER, delimiter);
+        job2.getConfiguration().set("mapred.textoutputformat.separator", delimiter);
 
         boolean step2 = job2.waitForCompletion(true);
         if(!(step2)) return -1;
@@ -164,6 +165,7 @@ public class RecommendationDriver extends Configured implements Tool {
                 Neighborhood2Reducer.class, Text.class, Text.class);
 
         job3.getConfiguration().set(Constants.DELIMITER, delimiter);
+        job3.getConfiguration().set("mapred.textoutputformat.separator", delimiter);
 
         boolean step3 = job3.waitForCompletion(true);
         if(!(step3)) return -1;
@@ -208,6 +210,7 @@ public class RecommendationDriver extends Configured implements Tool {
         }
 
         job5.getConfiguration().set(Constants.DELIMITER, delimiter);
+        job5.getConfiguration().set("mapred.textoutputformat.separator", delimiter);
 
         boolean step5 = job5.waitForCompletion(true);
         if(!(step5)) return -1;
@@ -230,6 +233,7 @@ public class RecommendationDriver extends Configured implements Tool {
 
         job6.getConfiguration().set(Constants.DELIMITER, delimiter);
         job6.getConfiguration().set("itemListPath", itemListOutputPath.toString());
+        job6.getConfiguration().set("mapred.textoutputformat.separator", delimiter);
 
         boolean step6 = job6.waitForCompletion(true);
         if(!(step6)) return -1;

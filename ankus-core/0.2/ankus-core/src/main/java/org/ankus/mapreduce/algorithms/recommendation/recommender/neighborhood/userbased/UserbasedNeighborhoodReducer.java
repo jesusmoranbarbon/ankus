@@ -54,7 +54,7 @@ public class UserbasedNeighborhoodReducer extends Reducer<Text, Text, Text, Text
 
         while (iterator.hasNext()){
             Text record = iterator.next();
-            String[] columns = record.toString().split(delimiter);
+            String[] columns = record.toString().split("\t");
 
             if(columns[1].equals(Constants.SIMILARITY)){
                 neighborhoodList.add(columns[0]);
@@ -67,7 +67,7 @@ public class UserbasedNeighborhoodReducer extends Reducer<Text, Text, Text, Text
         if(itemList.size() > 0 ){
             for(int i=0; i<neighborhoodList.size(); i++) {
                 for(int k=0; k<itemList.size(); k++){
-                    Text text = new Text(key.toString() + "\t" + itemList.get(k) + "\t" + ratingList.get(k));
+                    Text text = new Text(key.toString() + this.delimiter + itemList.get(k) + this.delimiter + ratingList.get(k));
                     context.write(new Text(neighborhoodList.get(i)), text);
                 }
             }

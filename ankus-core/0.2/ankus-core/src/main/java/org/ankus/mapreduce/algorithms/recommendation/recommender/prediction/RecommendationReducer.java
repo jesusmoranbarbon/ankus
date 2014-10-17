@@ -58,7 +58,7 @@ public class RecommendationReducer extends Reducer<Text, Text, Text, DoubleWrita
 
         while (iterator.hasNext()){
             Text text = iterator.next();
-            String[] columns = text.toString().split(delimiter);
+            String[] columns = text.toString().split("\t");
 
             if(columns[1].equals(Constants.SIMILARITY)){
                 neighborhoodList.add(columns[0]);
